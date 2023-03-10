@@ -1,0 +1,241 @@
+﻿<Window x:Name="window" x:Class="SmartFileRenamerNG.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartFileRenamerNG"
+        mc:Ignorable="d"
+        Title="Smart File Renamer (NG)" Height="450" Width="1000">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Row="0" Grid.Column="0">
+                <GroupBox.Header>
+                    <TextBlock>Subtitles</TextBlock>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="subtitlesListView" Grid.Row="0" Grid.Column="0"></ListView>
+                    <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                        <Button x:Name="subtitlesTop">⏫</Button>
+                        <Button x:Name="subtitlesUp">🔼</Button>
+                        <Button x:Name="subtitlesDown">🔽</Button>
+                        <Button x:Name="subtitlesBottom">⏬</Button>
+                    </WrapPanel>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBox  x:Name="subtitlesFilterValue" Grid.Row="0" Grid.Column="0"></TextBox>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                            <Button x:Name="subtitlesFilter">Filter</Button>
+                            <Button x:Name="subtitlesFilterAuto">Auto Filter</Button>
+                            <TextBlock x:Name="subtitlesFilterQuantity" >0 file(s)</TextBlock>
+                            <CheckBox x:Name="subtitlesAutoSort" >Auto Sort when Added</CheckBox>
+                            <Button x:Name="subtitlesSort">🔢</Button>
+                            <Button x:Name="subtitlesAddFile">🗄️</Button>
+                            <Button x:Name="subtitlesAddFolder">📁</Button>
+                            <Button x:Name="subtitlesRemove">➖</Button>
+                            <Button x:Name="subtitlesClear">❌</Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="0" Grid.Column="1">
+                <GroupBox.Header>
+                    <TextBlock>Videos</TextBlock>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="videoListView" Grid.Row="0" Grid.Column="0"></ListView>
+                    <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                        <Button x:Name="videoTop">⏫</Button>
+                        <Button x:Name="videoUp">🔼</Button>
+                        <Button x:Name="videoDown">🔽</Button>
+                        <Button x:Name="videoBottom">⏬</Button>
+                    </WrapPanel>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBox  x:Name="videoFilterValue" Grid.Row="0" Grid.Column="0"></TextBox>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                            <Button x:Name="videoFilter">Filter</Button>
+                            <Button x:Name="videoFilterAuto">Auto Filter</Button>
+                            <TextBlock x:Name="videoFilterQuantity" >0 file(s)</TextBlock>
+                            <CheckBox x:Name="videoAutoSort" >Auto Sort when Added</CheckBox>
+                            <Button x:Name="videoSort">🔢</Button>
+                            <Button x:Name="videoAddFile">🗄️</Button>
+                            <Button x:Name="videoAddFolder">📁</Button>
+                            <Button x:Name="videoRemove">➖</Button>
+                            <Button x:Name="videoClear">❌</Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <TextBlock>Options</TextBlock>
+                        </GroupBox.Header>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0">Template</TextBlock>
+                            <TextBox x:Name="template" Grid.Row="0" Grid.Column="1" Text="{}{MovieFileName}{.?SubtitleGroup}{.?Language}{.Extension}"></TextBox>
+
+                            <CheckBox Grid.Row="1" Grid.Column="0" x:Name="overrideSubtitleGroup">Override Subtitle Group</CheckBox>
+                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="overrideSubtitleGroupValue" IsEnabled="{Binding IsChecked, ElementName=overrideSubtitleGroup}"></TextBox>
+
+                            <CheckBox Grid.Row="2" Grid.Column="0"  x:Name="overrideLanguage">Override Language</CheckBox>
+                            <TextBox Grid.Row="2" Grid.Column="1"  x:Name="overrideLanguageValue" IsEnabled="{Binding IsChecked, ElementName=overrideLanguage}"></TextBox>
+
+                            <CheckBox  Grid.Row="3" Grid.Column="0"  x:Name="overrideExtension">Override Extension</CheckBox>
+                            <TextBox Grid.Row="3" Grid.Column="1"  x:Name="overrideExtensionValue" IsEnabled="{Binding IsChecked, ElementName=overrideExtension}"></TextBox>
+
+                            <CheckBox Grid.Row="4" Grid.Column="0" x:Name="moveToVideoFolder">Move to Video Folder</CheckBox>
+
+                            <GroupBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                                <GroupBox.Header>
+                                    <TextBlock>Display Mode</TextBlock>
+                                </GroupBox.Header>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="displayMode" IsChecked="True">Full path</RadioButton>
+                                    <RadioButton GroupName="displayMode">Name only</RadioButton>
+                                    <RadioButton GroupName="displayMode">Discrepancy part</RadioButton>
+                                </StackPanel>
+                            </GroupBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="Black" BorderThickness="1"  VerticalAlignment="Center" Margin="4">
+                            <TextBlock FontSize="96">📮</TextBlock>
+                        </Border>
+
+                        <Border BorderBrush="Black" BorderThickness="1"  VerticalAlignment="Center" Margin="4">
+                            <TextBlock FontSize="96">❌</TextBlock>
+                        </Border>
+
+                        <StackPanel VerticalAlignment="Bottom">
+                            <CheckBox x:Name="clearSubtitlesAfterRename">Clear subtitles after rename</CheckBox>
+                            <CheckBox x:Name="clearVideosAfterRename">Clear videos after rename</CheckBox>
+                            <CheckBox x:Name="alwaysOnTop" IsChecked="{Binding Topmost, ElementName=window}">Always On Top</CheckBox>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="preview" Grid.Row="0" Grid.Column="0">Preview</Button>
+                                <Button x:Name="rename" Grid.Row="0" Grid.Column="1">Rename</Button>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
