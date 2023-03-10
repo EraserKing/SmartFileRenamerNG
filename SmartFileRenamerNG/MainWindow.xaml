@@ -18,6 +18,9 @@
             <Setter Property="Margin" Value="2" />
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="2" />
+        </Style>
         <Style TargetType="RadioButton">
             <Setter Property="Margin" Value="2" />
         </Style>
@@ -65,12 +68,12 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListView x:Name="subtitlesListView" Grid.Row="0" Grid.Column="0"></ListView>
+                    <ListView x:Name="subtitlesListView" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding SubtitleFiles, ElementName=window}"></ListView>
                     <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
-                        <Button x:Name="subtitlesTop">⏫</Button>
-                        <Button x:Name="subtitlesUp">🔼</Button>
-                        <Button x:Name="subtitlesDown">🔽</Button>
-                        <Button x:Name="subtitlesBottom">⏬</Button>
+                        <Button x:Name="subtitlesTop" ToolTip="Top">⏫</Button>
+                        <Button x:Name="subtitlesUp" ToolTip="Up">🔼</Button>
+                        <Button x:Name="subtitlesDown" ToolTip="Down">🔽</Button>
+                        <Button x:Name="subtitlesBottom" ToolTip="Bottom">⏬</Button>
                     </WrapPanel>
                     <Grid Grid.Row="1" Grid.Column="0">
                         <Grid.ColumnDefinitions>
@@ -83,15 +86,15 @@
 
                         <TextBox  x:Name="subtitlesFilterValue" Grid.Row="0" Grid.Column="0"></TextBox>
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                            <Button x:Name="subtitlesFilter">Filter</Button>
-                            <Button x:Name="subtitlesFilterAuto">Auto Filter</Button>
+                            <Button x:Name="subtitlesFilter" Click="subtitlesFilter_Click">Filter</Button>
+                            <Button x:Name="subtitlesFilterAuto" Click="subtitlesFilterAuto_Click">Auto Filter</Button>
                             <TextBlock x:Name="subtitlesFilterQuantity" >0 file(s)</TextBlock>
                             <CheckBox x:Name="subtitlesAutoSort" >Auto Sort when Added</CheckBox>
-                            <Button x:Name="subtitlesSort">🔢</Button>
-                            <Button x:Name="subtitlesAddFile">🗄️</Button>
-                            <Button x:Name="subtitlesAddFolder">📁</Button>
-                            <Button x:Name="subtitlesRemove">➖</Button>
-                            <Button x:Name="subtitlesClear">❌</Button>
+                            <Button x:Name="subtitlesSort" ToolTip="Sort" Click="subtitlesSort_Click">🔢</Button>
+                            <Button x:Name="subtitlesAddFile" ToolTip="Add File" Click="subtitlesAddFile_Click">🗄️</Button>
+                            <Button x:Name="subtitlesAddFolder" ToolTip="Add Folder" Click="subtitlesAddFolder_Click">📁</Button>
+                            <Button x:Name="subtitlesRemove" ToolTip="Remove">➖</Button>
+                            <Button x:Name="subtitlesClear" ToolTip="Clear">❌</Button>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -112,12 +115,12 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListView x:Name="videoListView" Grid.Row="0" Grid.Column="0"></ListView>
+                    <ListView x:Name="videoListView" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding VideoFiles, ElementName=window}"></ListView>
                     <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
-                        <Button x:Name="videoTop">⏫</Button>
-                        <Button x:Name="videoUp">🔼</Button>
-                        <Button x:Name="videoDown">🔽</Button>
-                        <Button x:Name="videoBottom">⏬</Button>
+                        <Button x:Name="videoTop" ToolTip="Top">⏫</Button>
+                        <Button x:Name="videoUp" ToolTip="Up">🔼</Button>
+                        <Button x:Name="videoDown" ToolTip="Down">🔽</Button>
+                        <Button x:Name="videoBottom" ToolTip="Bottom">⏬</Button>
                     </WrapPanel>
                     <Grid Grid.Row="1" Grid.Column="0">
                         <Grid.ColumnDefinitions>
@@ -134,11 +137,11 @@
                             <Button x:Name="videoFilterAuto">Auto Filter</Button>
                             <TextBlock x:Name="videoFilterQuantity" >0 file(s)</TextBlock>
                             <CheckBox x:Name="videoAutoSort" >Auto Sort when Added</CheckBox>
-                            <Button x:Name="videoSort">🔢</Button>
-                            <Button x:Name="videoAddFile">🗄️</Button>
-                            <Button x:Name="videoAddFolder">📁</Button>
-                            <Button x:Name="videoRemove">➖</Button>
-                            <Button x:Name="videoClear">❌</Button>
+                            <Button x:Name="videoSort" ToolTip="Sort">🔢</Button>
+                            <Button x:Name="videoAddFile" ToolTip="Add File">🗄️</Button>
+                            <Button x:Name="videoAddFolder" ToolTip="Add Folder">📁</Button>
+                            <Button x:Name="videoRemove" ToolTip="Remove">➖</Button>
+                            <Button x:Name="videoClear" ToolTip="Clear">❌</Button>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -196,7 +199,7 @@
                                 </GroupBox.Header>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <RadioButton GroupName="displayMode" IsChecked="True">Full path</RadioButton>
+                                    <RadioButton GroupName="displayMode">Full path</RadioButton>
                                     <RadioButton GroupName="displayMode">Name only</RadioButton>
                                     <RadioButton GroupName="displayMode">Discrepancy part</RadioButton>
                                 </StackPanel>
@@ -207,11 +210,11 @@
 
                 <Grid Grid.Row="0" Grid.Column="1">
                     <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1"  VerticalAlignment="Center" Margin="4">
+                        <Border BorderBrush="Black" BorderThickness="1"  VerticalAlignment="Bottom" Margin="4">
                             <TextBlock FontSize="96">📮</TextBlock>
                         </Border>
 
-                        <Border BorderBrush="Black" BorderThickness="1"  VerticalAlignment="Center" Margin="4">
+                        <Border BorderBrush="Black" BorderThickness="1"  VerticalAlignment="Bottom" Margin="4">
                             <TextBlock FontSize="96">❌</TextBlock>
                         </Border>
 
